@@ -8,19 +8,25 @@ export interface Product {
 export const products = [
   {
     id: 1,
-    name: 'Phone XL',
-    price: 799,
+    name: 'yPhone XL',
+    price: 1099,
     description: 'A large phone with one of the best screens'
   },
   {
     id: 2,
-    name: 'Phone Mini',
-    price: 699,
+    name: 'yPhone Mini',
+    price: 799,
     description: 'A great phone with one of the best cameras'
   },
   {
     id: 3,
-    name: 'Phone Standard',
+    name: 'yPhone Standard',
+    price: 499,
+    description: 'You can call people with it'
+  },
+  {
+    id: 4,
+    name: 'yPhone C',
     price: 299,
     description: ''
   }

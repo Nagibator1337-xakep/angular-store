@@ -9,9 +9,15 @@ import { products } from '../products';
 })
 export class ProductListComponent {
   products = products;
+  timesShared:number = 0;
 
   share() {
     window.alert('The product has been shared!');
+    this.timesShared++;
+  }
+
+  onNotify() {
+    window.alert('You\'ll be notified when the product goes on sale!');
   }
 }
 
