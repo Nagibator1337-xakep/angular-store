@@ -1,0 +1,8 @@
+<h2>Cart</h2>
+<div *ngIf="items">
+  <div class="cart-item" *ngFor="let item of items">
+    <span>{{ item.name }}</span>
+    <span>{{ item.price | currency }}</span>
+    </div>
+</div>
+<button (click)="back()">Back</button>
