@@ -1,8 +1,13 @@
 <h2>Cart</h2>
+
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
 <div *ngIf="items">
   <div class="cart-item" *ngFor="let item of items">
     <span>{{ item.name }}</span>
     <span>{{ item.price | currency }}</span>
-    </div>
+  </div>
 </div>
 <button (click)="back()">Back</button>
