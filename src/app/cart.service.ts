@@ -14,11 +14,15 @@ export class CartService {
     this.items.push(product);
   }
 
+  removeFromCart(product: Product) {
+    this.items.splice(this.items.indexOf(product),1);
+  }
+
   getItems() {
     return this.items;
   }
 
-  deleteAllItems() {
+  clearCart() {
     this.items = [];
     return this.items;
   }

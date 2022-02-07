@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 
-import { products } from '../products';
+import { Product, products } from '../products';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   products = products;
   timesShared:number = 0;
+
+  constructor(private cartService: CartService) {}
 
   share() {
     window.alert('The product has been shared!');
@@ -19,6 +22,13 @@ export class ProductListComponent {
   onNotify() {
     window.alert('You\'ll be notified when the product goes on sale!');
   }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    window.alert('"' + product.name + '" have been added to the cart!');
+  }
+
+  ngOnInit(): void {}
 }
 
 
