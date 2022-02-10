@@ -12,6 +12,14 @@ import { Product } from "../products";
 export class CartComponent implements OnInit {
   items = this.cartService.getItems();
 
+  // shippingCosts:{ type: string; price: number }[] = [];
+  shippingCosts = this.cartService.getShippingPrices();
+
+  shippingOption:{ type: string; price: number } = {
+    type: "",
+    price: 0
+  };
+
   checkoutForm = this.formBuilder.group({
     name: '',
     address: ''
@@ -23,7 +31,11 @@ export class CartComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.cartService.getShippingPrices().subscribe(shippingCosts => shippingCosts.forEach(cost => this.shippingCosts.push(cost)));
+    // this.cartService.getShippingPrices().subscribe(shippingCosts => this.shippingCosts = shippingCosts);
+    // console.log(this.shippingCosts);
+  }
 
   onSubmit(): void {
     // Process checkout data here
@@ -34,6 +46,17 @@ export class CartComponent implements OnInit {
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product);
+  }
+
+  getTotalPrice():number {
+    let price:number = 0;
+    this.items.forEach(item => price+=item.price);
+    price+=this.shippingOption.price;
+    return price;
+  }
+
+  selectShippingOption(shippingOption:{ type: string; price: number }) {
+    this.shippingOption = shippingOption;
   }
 
   back(): void {

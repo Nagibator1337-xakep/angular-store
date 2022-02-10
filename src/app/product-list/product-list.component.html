@@ -1,7 +1,7 @@
 <h2>Products:</h2>
 
 <h4 *ngIf="timesShared">Products have been shared {{ timesShared }} times</h4>
-<div *ngFor="let product of products">
+<div class="border border-primary rounded spacer" *ngFor="let product of products">
   <h3>
     <a
       [title]="product.name + ' details'"

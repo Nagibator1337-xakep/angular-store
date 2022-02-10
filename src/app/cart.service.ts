@@ -7,7 +7,7 @@ import { Product } from "./products";
 })
 export class CartService {
   items: Product[] = [];
-
+  
   constructor(private http: HttpClient) {}
 
   addToCart(product: Product) {

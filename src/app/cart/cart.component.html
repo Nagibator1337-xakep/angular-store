@@ -7,24 +7,53 @@
 <div *ngIf="items">
   <div class="cart-item" *ngFor="let item of items">
     <span>{{ item.name }}</span>
-    <span>{{ item.price | currency }}</span>
-    <button (click)="removeFromCart(item)">Remove</button>
-  </div>  
+    <div class="cart-item1">
+      <span>{{ item.price | currency }}</span>
+      <button (click)="removeFromCart(item)">Remove</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="shippingOption.type" class="cart-item">
+  <span>{{ shippingOption.type }}</span>
+  <span>{{ shippingOption.price | currency }}</span>
+</div>
+<div class="cart-item">
+  <span>{{ getTotalPrice() | currency }}</span>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
+        Select shipping options
+      </button>
+
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button
+          ngbDropdownItem
+          (click)="selectShippingOption(shipping)"
+          *ngFor="let shipping of shippingCosts |async"
+        >
+          {{ shipping.type }} - {{ shipping.price | currency }}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="name">
-      Name
-    </label>
-    <input id="name" type="text" formControlName="name">
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
   </div>
 
   <div>
-    <label for="address">
-      Address
-    </label>
-    <input id="address" type="text" formControlName="address">
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
   </div>
 
   <button class="button" type="submit">Purchase</button>

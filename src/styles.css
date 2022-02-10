@@ -15,6 +15,12 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  margin-top: 1rem;
+}
+
+.spacer {
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 router-outlet + *  {
@@ -49,6 +55,7 @@ a {
 
 a:hover {
   opacity: 0.8;
+  text-decoration: none;
 }
 
 /* Input */
@@ -127,15 +134,21 @@ app-top-bar h1 {
 .cart-item, .shipping-item {
   width: 100%;
   min-width: 400px;
-  max-width: 450px;
+  max-width: 650px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 16px 32px;
   margin-bottom: 8px;
   border-radius: 2px;
   background-color: #EEEEEE;
 }
+
+.cart-item1 {
+  justify-content: space-between;
+}
+
 
 
 /*
