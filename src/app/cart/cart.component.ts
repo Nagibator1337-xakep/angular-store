@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
-import { CartService } from "../cart.service";
+import { CartService, Marketdata } from "../cart.service";
 import { Location } from "@angular/common";
 import { Product } from "../products";
 
@@ -12,7 +12,8 @@ import { Product } from "../products";
 export class CartComponent implements OnInit {
   items = this.cartService.getItems();
 
-  // shippingCosts:{ type: string; price: number }[] = [];
+  USDValue: number = 0;
+
   shippingCosts = this.cartService.getShippingPrices();
 
   shippingOption:{ type: string; price: number } = {
@@ -32,9 +33,7 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.cartService.getShippingPrices().subscribe(shippingCosts => shippingCosts.forEach(cost => this.shippingCosts.push(cost)));
-    // this.cartService.getShippingPrices().subscribe(shippingCosts => this.shippingCosts = shippingCosts);
-    // console.log(this.shippingCosts);
+    this.cartService.getUSDValue().then(usdValue => this.USDValue = usdValue);
   }
 
   onSubmit(): void {

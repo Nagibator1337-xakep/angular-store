@@ -61,5 +61,5 @@
     <button class="button" type="submit">Purchase</button>
   </form>
 </div>
-
+<div>{{ USDValue | currency : 'RUB' : 'symbol-narrow' : '1.2-2' }} / USD</div>
 <button (click)="back()">Back</button>

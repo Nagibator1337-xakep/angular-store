@@ -45,6 +45,12 @@ p {
   font-size: 14px;
 }
 
+.whitetext {
+  font-size: 20px;
+  color: #fff;
+
+}
+
 /* Hyperlink */
 
 a {
