@@ -14,10 +14,7 @@ export class CartComponent implements OnInit {
 
   shippingCosts = this.cartService.getShippingPrices();
 
-  shippingOption:{ type: string; price: number } = {
-    type: "",
-    price: 0
-  };
+  shippingOption = this.cartService.getShippingOption();
 
   checkoutForm = this.formBuilder.group({
     name: '',
@@ -53,7 +50,8 @@ export class CartComponent implements OnInit {
   }
 
   selectShippingOption(shippingOption:{ type: string; price: number }) {
-    this.shippingOption = shippingOption;
+    this.cartService.selectShippingOption(shippingOption);
+    this.shippingOption = this.cartService.getShippingOption();
   }
 
   back(): void {

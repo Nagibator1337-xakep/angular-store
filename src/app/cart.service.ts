@@ -13,6 +13,11 @@ export interface Marketdata {
 export class CartService {
   items: Product[] = [];
 
+  shippingOption:{ type: string; price: number } = {
+    type: "",
+    price: 0
+  };
+
   constructor(private http: HttpClient) {}
 
   addToCart(product: Product) {
@@ -27,6 +32,10 @@ export class CartService {
     return this.items;
   }
 
+  getShippingOption() {
+    return this.shippingOption;
+  }
+
   clearCart() {
     this.items = [];
     return this.items;
@@ -38,7 +47,11 @@ export class CartService {
     );
   }
 
-  async getUSDValue() {
+  selectShippingOption(shippingOption:{ type: string; price: number }) {
+    this.shippingOption = shippingOption;
+  }
+
+  async getUSDValue(): Promise<number> {
     const DATA = "https://iss.moex.com/iss/engines/currency/markets/selt/securities.json?iss.only=marketdata&securities=CETS:USD000UTSTOM&marketdata.columns=LAST&lang=ru&iss.meta=off&iss.json=extended";
     
     let usdrub_tom: number = 0;
